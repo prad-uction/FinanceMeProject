@@ -31,7 +31,7 @@ pipeline {
 
         stage('Containerization and Deployment'){
             steps{
-                sh 'docker run -itd --name CBS -p 8082:8081 pradocks/bankingimage:v1'
+                sh 'docker run -itd --name CBS -p 8082:8081 financebanking'
             }
         }
 
