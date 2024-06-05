@@ -31,7 +31,7 @@ pipeline {
             steps{
                 script{
                         sh 'docker tag financebanking pradocks/bankingimage:v1'
-                        sh 'docker push pradocks/bankingimage:v1'
+                        sh 'sudo docker push pradocks/bankingimage:v1'
                 }
 
             }
