@@ -1,16 +1,14 @@
-- name : Configure Docker on EC2 Instances
+- name : Installing Docker on remote EC2 machine using trust-relationship connection
   hosts : all
   become: true
   connection : ssh
   tasks : 
-  - name: updating apt
+  - name: apt update
     command : sudo apt-get update
 
-  - name : Install Docker
+  - name : Docker install
     command : sudo apt-get install -y docker.io
 
-  - name : Start Docker Service
+  - name : Start Docker service
     command : sudo systemctl start docker
 
-  - name: Deploy Docker Container
-    command: docker run -itd -p 8084:8081 shubhamkushwah123/finance-me:1.0
