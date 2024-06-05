@@ -12,14 +12,6 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-
-        stage('Docker login'){
-            steps{
-                withCredentials([usernamePassword(credentialsId: 'DockerHub-credentials', passwordVariable: 'Docking-possible4Pradee', usernameVariable: 'pradeepkumarg97.19@gmail.com')]) {
-                }
-            }
-        }
-
         stage('Building Docker image'){
             steps{
                 script{
@@ -34,6 +26,18 @@ pipeline {
                 sh 'docker run -itd --name CBS -p 8082:8081 financebanking'
             }
         }
+
+        stage('Image tag and push to DockerHub'){
+            steps{
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'DockerHub-credentials', passwordVariable: 'Docking-possible4Pradee', usernameVariable: 'pradeepkumarg97.19@gmail.com')])
+                    sh 'docker tag financebanking pradocks/bankingimage:v1'
+                    sh 'docker push pradocks/bankingimage:v1'
+                }
+
+            }
+        }
+
 
    }
 }
