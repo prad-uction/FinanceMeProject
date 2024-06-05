@@ -13,6 +13,13 @@ pipeline {
             }
         }
 
+        stage('Docker login'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'DockerHub-credentials', passwordVariable: 'Docking-possible4Pradee', usernameVariable: 'pradeepkumarg97.19@gmail.com')]) {
+                }
+            }
+        }
+
         stage('Building Docker image'){
             steps{
                 script{
