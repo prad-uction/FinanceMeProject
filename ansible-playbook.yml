@@ -13,7 +13,7 @@
     command : sudo systemctl start docker
 
   - name: Deploy Docker Container
-    command: docker run -itd --name CBS -p 8082:8081 financebanking
+    command: docker run -itd --name CBS -p 8082:8081 pradocks/bankingimage:v1
 
 
 
